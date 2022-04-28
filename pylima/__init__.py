@@ -66,9 +66,9 @@ def diagrama(x0, it, color1, color2, funcion, *par):
     s = np.arange(0, 1, 0.01)
     fs=[]
     
-    for k in range(len(s)):
-        fs.append(f(s[k]))
-    ax.plot(s,fs)    
+    # for k in range(len(s)):
+    #    fs.append(f(s[k]))
+    # ax.plot(s,fs)    
     ax.plot(s, s, color='black')
     for i in range(it):
         x.append(x[2*i])
