@@ -54,9 +54,9 @@ def diagrama(x0, it, color1, color2, funcion, *par):
         if funcion=='dyadic map':
             return fd(x)
         elif funcion=='tent map':
-            return ft(x,par)
+            return ft(x,*par)
         elif funcion=='logistic map':
-            return fl(x,par)
+            return fl(x,*par)
         else:
             raise NoFunction       
     fig, ax = plt.subplots()
@@ -79,6 +79,6 @@ def diagrama(x0, it, color1, color2, funcion, *par):
         camera.snap()
     return camera.animate()
 
-anim = diagrama(.2, 10, 'green', 'red', 'tent map', 2.5)
+# anim = diagrama(.2, 10, 'green', 'red', 'tent map', 2.5)
 
-HTML(anim.to_html5_video())
+# HTML(anim.to_html5_video())
