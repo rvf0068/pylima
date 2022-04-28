@@ -5,6 +5,10 @@ from celluloid import Camera
 from IPython.display import HTML
 from sympy import symbols, Function, Eq, Derivative, dsolve, solve
 
+def hola():
+    return "Hola"
+    
+
 def my_sum(x, y):
     """A function that sums. """
     return x+y
