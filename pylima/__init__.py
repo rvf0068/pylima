@@ -23,3 +23,8 @@ def sistema(matriz):
     sols = dsolve((eq1, eq2))
 
     return sols[0].rhs, sols[1].rhs
+
+
+def saludo(persona):
+    """A function that says hi to you."""
+    return "¡Hola, " + persona 
