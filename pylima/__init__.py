@@ -66,16 +66,17 @@ def diagrama(x0, it, color1, color2, funcion, *par):
     s = np.arange(0, 1, 0.01)
     fs=[]
     
-    # for k in range(len(s)):
-    #    fs.append(f(s[k]))
-    # ax.plot(s,fs)    
-    ax.plot(s, s, color='black')
+    for k in range(len(s)):
+       fs.append(f(s[k]))
+    
     for i in range(it):
         x.append(x[2*i])
         x.append(f(x[2*i]))
         y.append(f(y[2*i]))
         y.append(f(y[2*i]))
         ax.plot(x, y, color=color2)
+        ax.plot(s, s, color='black')
+        ax.plot(s,fs) 
         camera.snap()
     return camera.animate()
 
