@@ -1,5 +1,5 @@
 from setuptools import setup
-Hola a todos 
+
 setup(name='pylima',
       version='0.1',
       description='A Python package for undergraduate math',
