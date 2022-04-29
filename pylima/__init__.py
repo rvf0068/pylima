@@ -52,7 +52,7 @@ def diagrama(x0=0.1,
              funcion='logistic map',
              *par):
     def fd(x):
-        if 0 <= x <= 0.5:
+        if 0 <= x < 0.5:
             return 2*x
         else:
             return 2*x-1
