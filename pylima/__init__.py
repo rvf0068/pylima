@@ -36,21 +36,58 @@ def saludo(persona):
     return "¡Hola, " + persona 
 
 
+
 class NoFunction(Exception):
     """Exception to raise when argument funtion is not a logistic map, dyadic map or tent map"""
     pass
-def fd(x):
-    if 0<x<0.5:
-        return 2*x
-    else:
-        return 2*x-1
-def ft(x,par):
-    return par*min(x,x-1)
-def fl(x,par):
-    return par*x*(1-x)
 
-def diagrama(x0, it, color1, color2, funcion, *par):    
+
+class NoParameter(Exception):
+    """Exception to raise when parameter of funtion is not allowed"""
+    pass
+
+
+def diagrama(x0, it, color1, color2, color3, funcion, *par):  
+    """Diagram animation
+        Args:
+            param1: initial point of the system
+            param2: number of iterations
+            param3: color of spider web
+            param4: color of identity function
+            param5: color of system function
+            param6: function
+            param7: optional parameter, this depends on the function to graph
+        Returns:
+            Animation to see the behavior of system through a 'spider web diagram'
+        Raises:
+            KeyError: Parameter and functions."""
+    def fd(x):
+        """Dyadic function"""
+        if 0<=x<0.5:
+            return 2*x
+        elif 0.5<=x<1:
+            return 2*x-1
+        else: 
+            return 0
+    
+    
+    def ft(x,par):
+        """Tent function with parameter less than 2 and greater than 0"""
+        if 0<par<2:
+            return par*min(x,1-x)
+        else:
+            raise NoParameter
+
+
+    def fl(x,par):
+        """Logistic function with positive parameter"""
+        if 0<par:
+            return par*x*(1-x)
+        else:
+            raise NoParameter
+
     def f(x):
+        """Function choosen to graph"""
         if funcion=='dyadic map':
             return fd(x)
         elif funcion=='tent map':
@@ -74,12 +111,11 @@ def diagrama(x0, it, color1, color2, funcion, *par):
         x.append(f(x[2*i]))
         y.append(f(y[2*i]))
         y.append(f(y[2*i]))
-        ax.plot(x, y, color=color2)
-        ax.plot(s, s, color='black')
-        ax.plot(s,fs) 
+        ax.plot(x, y, color=color1)
+        ax.plot(s, s, color=color2)
+        ax.plot(s,fs, color=color3)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
         camera.snap()
     return camera.animate()
 
-# anim = diagrama(.2, 10, 'green', 'red', 'tent map', 2.5)
-
-# HTML(anim.to_html5_video())
