@@ -5,5 +5,3 @@ def cuadrados_fibonacci(n):
         fibs.append(a)
         a, b = b, a+b
     return fibs
-
-cuadrados_fibonacci(100)
