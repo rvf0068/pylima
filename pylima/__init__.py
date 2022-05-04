@@ -1,2 +1,2 @@
-from EDO.py import *
+from pylima.EDO import *
     
